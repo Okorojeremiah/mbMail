@@ -28,6 +28,8 @@ public class MailBox {
     @OneToMany
     @ToString.Exclude
     private List<Message> trash;
+    @OneToOne
+    private User user;
 
     @Override
     public boolean equals(Object o) {
