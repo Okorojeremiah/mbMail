@@ -31,10 +31,10 @@ public class User {
     private String phoneNumber;
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     @ToString.Exclude
     private List<Contact> contacts = new ArrayList<>();
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private MailBox mailBox;
 
     @Override
