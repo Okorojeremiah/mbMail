@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface ContactService {
     void addContact(Contact contact);
     Optional<Contact> findByEmailAddress(String emailAddress);
+    boolean contactExist(String email);
 }
