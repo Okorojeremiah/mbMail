@@ -1,0 +1,34 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mbdb?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: slimjay91
+  mail:
+    host: localhost
+    username: hello
+    password: hello
+    port: 1025
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+
