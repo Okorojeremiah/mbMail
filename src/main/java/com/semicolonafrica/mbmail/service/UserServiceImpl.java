@@ -72,17 +72,15 @@ public class UserServiceImpl implements UserService{
         User user = userRepo.findById(contactRequest.getUserId())
                 .orElseThrow(()-> new RuntimeException("User not found"));
 
-        boolean foundContact = contactService.findByEmailAddress(contactRequest.getContact().getEmailAddress()).isPresent();
+        if (contactService.contactExist(contactRequest.getContact().getEmailAddress()))
+            throw new RuntimeException("Contact exists");
+
         Contact contact = new Contact();
-        if (foundContact){
-            throw new RuntimeException("Contact already exist");
-        }else {
             contact.setFullName(contactRequest.getContact().getFullName());
             contact.setEmailAddress(contactRequest.getContact().getEmailAddress());
             contactService.addContact(contact);
             user.getContacts().add(contact);
             userRepo.save(user);
-        }
 
         return AddContactResponse.builder()
                 .message("contact added successfully")
