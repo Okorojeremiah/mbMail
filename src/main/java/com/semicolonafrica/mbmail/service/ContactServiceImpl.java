@@ -21,4 +21,10 @@ public class ContactServiceImpl implements ContactService{
     public Optional<Contact> findByEmailAddress(String emailAddress) {
         return contactRepo.findByEmailAddress(emailAddress);
     }
+
+    @Override
+    public boolean contactExist(String email) {
+        return contactRepo.findByEmailAddress(email).isPresent();
+    }
+
 }
